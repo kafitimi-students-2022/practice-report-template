@@ -19,7 +19,7 @@ jobs:
         id: info
         run: |
           echo "name=$(TZ=Asia/Yakutsk date +'%Y.%m.%d %H:%M')" >> $GITHUB_OUTPUT
-          echo "tag=$(TZ=Asia/Yakutsk date +'%Y%m%d-%H%M')" >> $GITHUB_OUTPUT
+          echo "tag=$(TZ=Asia/Yakutsk date +'%Y%.m.%d-%H.%M')" >> $GITHUB_OUTPUT
 
       - name: Create a GitHub release
         uses: softprops/action-gh-release@v2
