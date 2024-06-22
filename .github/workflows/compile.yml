@@ -10,16 +10,17 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Compile a LaTeX document
-        uses: dante-ev/latex-action@latest
+        uses: xu-cheng/latex-action@v2
         with:
           root_file: report.tex
-          compiler: pdflatex
+          latexmk_use_xelatex: true
+          extra_fonts: ./fonts/*.ttf
 
       - name: Prepare a tag info for upcoming release
         id: info
         run: |
           echo "name=$(TZ=Asia/Yakutsk date +'%Y.%m.%d %H:%M')" >> $GITHUB_OUTPUT
-          echo "tag=$(TZ=Asia/Yakutsk date +'%Y%.m.%d-%H.%M')" >> $GITHUB_OUTPUT
+          echo "tag=$(TZ=Asia/Yakutsk date +'%Y.%m.%d-%H.%M')" >> $GITHUB_OUTPUT
 
       - name: Create a GitHub release
         uses: softprops/action-gh-release@v2
